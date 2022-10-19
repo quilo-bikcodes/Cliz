@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "598616233146",
+    "project_id": "cliz-vitb",
+    "storage_bucket": "cliz-vitb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598616233146:android:95255e9f46065b15911e83",
+        "android_client_info": {
+          "package_name": "com.bikcodes.cliz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598616233146-rn8eupd3g5lslhdh181787a6hjgl2ek0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bikcodes.cliz",
+            "certificate_hash": "cff34b1d3e8972fd39122653776ee345a67f8233"
+          }
+        },
+        {
+          "client_id": "598616233146-6up7h552l1gsrnf1qjqj4fe1914kisop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIpfNq8jg2Dr6rh_x90M7Ck4DhQCbyE70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598616233146-6up7h552l1gsrnf1qjqj4fe1914kisop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
