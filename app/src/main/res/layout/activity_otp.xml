@@ -4,35 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".otpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/phonebox"
+            android:id="@+id/editTextNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:autofillHints=""
-            android:background="@drawable/edittextloginsignup"
-            android:ems="10"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:padding="10dp" />
-
-        <EditText
-            android:id="@+id/otpbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:background="@drawable/edittextloginsignup"
             android:ems="10"
             android:hint="Enter OTP"
@@ -41,23 +27,14 @@
             android:padding="10dp" />
 
         <Button
-            android:id="@+id/phonebtn"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:background="@drawable/open_button"
-            android:text="GENERATE"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/verifyotpbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/open_button"
-            android:text="VERIFY"
+            android:text="CONFIRM"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
