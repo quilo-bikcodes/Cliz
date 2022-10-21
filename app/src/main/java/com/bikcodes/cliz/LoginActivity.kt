@@ -1,15 +1,19 @@
 package com.bikcodes.cliz
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -26,18 +30,125 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        findViewById<Button>(R.id.phonebtn).setOnClickListener {
-            val phoneNumber = findViewById<EditText>(R.id.phonebox).text.toString()
-            otppartone(phoneNumber)
-            findViewById<Button>(R.id.verifyotpbtn).setOnClickListener {
-                val otp = findViewById<EditText>(R.id.otpbox).text.toString()
-                verifyCode(otp);
-            }
-        }
+//        findViewById<Button>(R.id.phonebtn).setOnClickListener {
+//            val phoneNumber = findViewById<EditText>(R.id.phonebox).text.toString()
+//            otppartone(phoneNumber)
+//            findViewById<Button>(R.id.verifyotpbtn).setOnClickListener {
+//                val otp = findViewById<EditText>(R.id.otpbox).text.toString()
+//                verifyCode(otp);
+//            }
+//        }
 //        blur()
         transparentstatusbar()
+        animation()
+        nightchanger()
+        numberotpchanger()
+        otpdetailchanger()
+
     }
 
+    private fun otpdetailchanger() {
+                    findViewById<Button>(R.id.verifyotpbtn).setOnClickListener {
+                val otp = findViewById<EditText>(R.id.pin_view2).text.toString()
+                verifyCode(otp);
+            }
+    }
+
+    private fun numberotpchanger() {
+        findViewById<Button>(R.id.opencontbtn2).setOnClickListener {
+            val phoneNumber = findViewById<EditText>(R.id.loginphonebox).text.toString()
+            val loginll1 = findViewById<LinearLayout>(R.id.loginll1)
+            val loginll3 = findViewById<LinearLayout>(R.id.loginll3)
+
+
+            val animation1 = AnimationUtils.loadAnimation(this, R.anim.animateotpprog)
+            val animation2 = AnimationUtils.loadAnimation(this, R.anim.goneloginllone)
+            animation1.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation) {}
+                override fun onAnimationEnd(animation: Animation) {
+                    loginll1.translationY = 2000000f
+                }
+                override fun onAnimationRepeat(animation: Animation) {}
+            })
+            val loginimg = findViewById<ImageView>(R.id.loginimg)
+            loginimg.startAnimation(animation1)
+
+            findViewById<TextView>(R.id.alternatelogintext).setTextColor(resources.getColor(R.color.white))
+            otpitemsvisible(true)
+            otppartone(phoneNumber)
+
+        }
+    }
+
+    private fun otpitemsvisible(b: Boolean) {
+        if(b) {
+            val loginll1 = findViewById<LinearLayout>(R.id.loginll1)
+            val loginll3 = findViewById<LinearLayout>(R.id.loginll3)
+            loginll3.visibility = View.VISIBLE
+            loginll1.visibility = View.GONE
+        }
+    }
+
+
+    private fun nightchanger() {
+        val opennightswitch = findViewById<SwitchCompat>(R.id.opennightswitch)
+        opennightswitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
+            run {
+                if (b) {
+                    animationmasknight()
+                    val isNight = true
+                    val sharedPrefs: SharedPreferences = getSharedPreferences("nightmode", MODE_PRIVATE)
+                    sharedPrefs.edit().putBoolean("NightMode", isNight).apply()
+
+                }else{
+                    animationmasklight()
+                    val isNight = false
+                    val sharedPrefs: SharedPreferences = getSharedPreferences("nightmode", MODE_PRIVATE)
+                    sharedPrefs.edit().putBoolean("NightMode", isNight).apply()
+                }
+            }
+        })
+    }
+    private fun animationmasklight() {
+        val animation = AnimationUtils.loadAnimation(this, R.anim.lightmodeexpandcircle)
+        val openmaska = findViewById<ImageView>(R.id.openmaska)
+        val openmaskb = findViewById<ImageView>(R.id.openmaskb)
+        findViewById<ImageView>(R.id.line1).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.linelight))
+        findViewById<ImageView>(R.id.line2).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.linelight))
+        findViewById<TextView>(R.id.alternatelogintext).setTextColor(resources.getColor(R.color.black))
+        openmaska.startAnimation(animation)
+        openmaskb.startAnimation(animation)
+    }
+
+    private fun animationmasknight() {
+        val animation = AnimationUtils.loadAnimation(this, R.anim.nightmodeexpandcircle)
+        val openmaska = findViewById<ImageView>(R.id.openmaska)
+        val openmaskb = findViewById<ImageView>(R.id.openmaskb)
+        openmaska.isVisible = true
+        openmaskb.isVisible = true
+        findViewById<ImageView>(R.id.line1).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.line))
+        findViewById<ImageView>(R.id.line2).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.line))
+        findViewById<TextView>(R.id.alternatelogintext).setTextColor(resources.getColor(R.color.white))
+        openmaska.startAnimation(animation)
+        openmaskb.startAnimation(animation)
+    }
+
+    private fun animation() {
+        val animation = AnimationUtils.loadAnimation(this, R.anim.animatelogin)
+        val animation2 = AnimationUtils.loadAnimation(this, R.anim.animatelogintwo)
+        val logininfo = findViewById<ImageView>(R.id.logininfo)
+        val loginimg = findViewById<ImageView>(R.id.loginimg)
+        val loginswitch = findViewById<SwitchCompat>(R.id.opennightswitch)
+        val loginll1 = findViewById<LinearLayout>(R.id.loginll1)
+        val loginll2 = findViewById<LinearLayout>(R.id.loginll2)
+        logininfo.startAnimation(animation)
+        loginimg.startAnimation(animation)
+        loginswitch.startAnimation(animation)
+        loginll1.startAnimation(animation)
+        loginll2.startAnimation(animation2)
+
+    }
+//
     private fun verifyCode(code: String) {
         val credential = PhoneAuthProvider.getCredential(verificationId, code)
         signInWithCredential(credential)
@@ -78,7 +189,7 @@ class LoginActivity : AppCompatActivity() {
 
                 if (code != null) {
 
-                    val edtOTP = findViewById<EditText>(R.id.otpbox)
+                    val edtOTP = findViewById<com.chaos.view.PinView>(R.id.pin_view2)
                     edtOTP.setText(code)
                     verifyCode(code)
 
