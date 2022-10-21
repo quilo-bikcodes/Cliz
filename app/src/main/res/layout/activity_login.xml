@@ -219,7 +219,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/bahnschrift"
-            android:text="To verify your Identity we need \nyour phone number."
+            android:text="Please type the verification code sent to +9174******48"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
@@ -230,12 +230,14 @@
 
         <com.chaos.view.PinView
             android:id="@+id/pin_view2"
+            style="@style/PinWidget.PinView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:cursorVisible="true"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:inputType="number"
             android:itemBackground="#65EAEAEA"
             android:translationX="10dp"
@@ -247,9 +249,7 @@
             app:itemWidth="50dp"
             app:lineColor="@color/black"
             app:lineWidth="2dp"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:focusableInTouchMode="true"
-            style="@style/PinWidget.PinView"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/verifyotpbtn"

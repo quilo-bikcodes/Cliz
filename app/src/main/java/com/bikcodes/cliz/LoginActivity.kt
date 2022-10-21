@@ -63,18 +63,24 @@ class LoginActivity : AppCompatActivity() {
 
             val animation1 = AnimationUtils.loadAnimation(this, R.anim.animateotpprog)
             val animation2 = AnimationUtils.loadAnimation(this, R.anim.goneloginllone)
-            animation1.setAnimationListener(object : Animation.AnimationListener {
+            val animation3 = AnimationUtils.loadAnimation(this, R.anim.getloginllthree)
+            loginll1.startAnimation(animation2)
+            animation2.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation) {}
                 override fun onAnimationEnd(animation: Animation) {
                     loginll1.translationY = 2000000f
+                    otpitemsvisible(true)
+                    loginll3.startAnimation(animation3)
+                    val loginimg = findViewById<ImageView>(R.id.loginimg)
+                    loginimg.startAnimation(animation1)
+
                 }
                 override fun onAnimationRepeat(animation: Animation) {}
             })
-            val loginimg = findViewById<ImageView>(R.id.loginimg)
-            loginimg.startAnimation(animation1)
+
 
             findViewById<TextView>(R.id.alternatelogintext).setTextColor(resources.getColor(R.color.white))
-            otpitemsvisible(true)
+
             otppartone(phoneNumber)
 
         }
@@ -214,9 +220,30 @@ class LoginActivity : AppCompatActivity() {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val i = Intent(this, HomeActivity::class.java)
-                    startActivity(i)
-                    finish()
+                    //Task on Verification successfully completed
+                    val loginll3 = findViewById<LinearLayout>(R.id.loginll3)
+                    val loginll4 = findViewById<LinearLayout>(R.id.loginll4)
+                    val loginll2 = findViewById<LinearLayout>(R.id.loginll2)
+                    val animation1 = AnimationUtils.loadAnimation(this, R.anim.animatedetailprog)
+                    val animation2 = AnimationUtils.loadAnimation(this, R.anim.goneloginllone)
+                    val animation3 = AnimationUtils.loadAnimation(this, R.anim.getloginllthree)
+                    loginll3.startAnimation(animation2)
+                    animation2.setAnimationListener(object : Animation.AnimationListener {
+                        override fun onAnimationStart(animation: Animation) {}
+                        override fun onAnimationEnd(animation: Animation) {
+                            loginll3.translationX = 3000000f
+                            loginll2.translationX = 3000000f
+                            loginll4.visibility = View.VISIBLE
+                            loginll4.startAnimation(animation3)
+                            val loginimg = findViewById<ImageView>(R.id.loginimg)
+                            loginimg.startAnimation(animation1)
+                            findViewById<Button>(R.id.doneloginbtn).setOnClickListener{
+                                startActivity(Intent(baseContext, HomeActivity::class.java))
+                            }
+
+                        }
+                        override fun onAnimationRepeat(animation: Animation) {}
+                    })
                 } else {
                     Toast.makeText(this, task.exception!!.message, Toast.LENGTH_LONG)
                         .show()
