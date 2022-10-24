@@ -1,4 +1,4 @@
-package com.bikcodes.cliz
+package com.bikcodes.cliz.Activities
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.bikcodes.cliz.R
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -119,8 +120,12 @@ class LoginActivity : AppCompatActivity() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.lightmodeexpandcircle)
         val openmaska = findViewById<ImageView>(R.id.openmaska)
         val openmaskb = findViewById<ImageView>(R.id.openmaskb)
-        findViewById<ImageView>(R.id.line1).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.linelight))
-        findViewById<ImageView>(R.id.line2).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.linelight))
+        findViewById<ImageView>(R.id.line1).setImageDrawable(ContextCompat.getDrawable(this,
+            R.drawable.linelight
+        ))
+        findViewById<ImageView>(R.id.line2).setImageDrawable(ContextCompat.getDrawable(this,
+            R.drawable.linelight
+        ))
         findViewById<TextView>(R.id.alternatelogintext).setTextColor(resources.getColor(R.color.black))
         openmaska.startAnimation(animation)
         openmaskb.startAnimation(animation)
@@ -132,8 +137,12 @@ class LoginActivity : AppCompatActivity() {
         val openmaskb = findViewById<ImageView>(R.id.openmaskb)
         openmaska.isVisible = true
         openmaskb.isVisible = true
-        findViewById<ImageView>(R.id.line1).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.line))
-        findViewById<ImageView>(R.id.line2).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.line))
+        findViewById<ImageView>(R.id.line1).setImageDrawable(ContextCompat.getDrawable(this,
+            R.drawable.line
+        ))
+        findViewById<ImageView>(R.id.line2).setImageDrawable(ContextCompat.getDrawable(this,
+            R.drawable.line
+        ))
         findViewById<TextView>(R.id.alternatelogintext).setTextColor(resources.getColor(R.color.white))
         openmaska.startAnimation(animation)
         openmaskb.startAnimation(animation)

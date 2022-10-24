@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CLIZ</string>
     <string name="land_desc">Multiple Benefits of \nCleaning the country, \nyour Fitness as well as \nprogressional rewards. Is’nt  that awesome? \nSo what to wait join us \nsoon.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYmlrcmFtamVldGRnIiwiYSI6ImNsOWoxcWd2NzAxcWwzdW5zczM0Y3B1bzkifQ.wE5MEI4GkJ2DEgBiiK6Okg</string>
 </resources>
